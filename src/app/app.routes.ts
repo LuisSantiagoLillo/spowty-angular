@@ -7,6 +7,7 @@ import { MusicPanelComponent } from './pages/music-panel/music-panel.component';
 export const ROUTES: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'spowty', component: MusicPanelComponent},
+    {path: 'spowty/:id', component: MusicPanelComponent},
     // Default routes
     {path: '', pathMatch: 'full', component: HomeComponent},
     {path: '**', pathMatch: 'full', component: HomeComponent}

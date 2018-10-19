@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyAPIService } from 'src/app/services/spotify-api.service';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,17 @@ import { SpotifyAPIService } from 'src/app/services/spotify-api.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(_spotifyAPI: SpotifyAPIService) {
+  constructor(
+    private router: Router,
+    private _spotifyAPI: SpotifyAPIService
+    ) {
   }
 
   ngOnInit() {
   }
+
+  search(busqueda: string): void {
+    this.router.navigate(['/spowty', busqueda]);
+}
 
 }

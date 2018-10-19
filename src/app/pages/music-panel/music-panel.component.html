@@ -1,3 +1,29 @@
-<p>
-  music-panel works!
-</p>
+<div class="container animated fadeIn">
+    <div class="row">
+        <div class="col">
+            <div class="card-columns animated fadeIn" *ngIf="type">
+                <div *ngFor="let exito of data" class="card">
+                    <img [src]="exito.images | noimage" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{exito.name}}</h5>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button (click)="searchArtist(artist.id)" *ngFor="let artist of exito.artists" type="button" class="btn btn-primary">{{artist.name}}</button>
+                        </div>
+                        <!--<span *ngFor="let artist of exito.artists" class="badge badge-pill badge-primary">{{artist.name}}</span>-->
+                        <p class="card-text">{{exito.artists.name}}</p>
+                        <iframe [src]="exito.uri | domsecure" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-columns animated fadeIn" *ngIf="!type">
+                <div *ngFor="let artist of data" class="card">
+                    <img [src]="artist.images | noimage" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <button (click)="searchArtist(artist.id)" class="btn-block btn-lg btn-info">{{artist.name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

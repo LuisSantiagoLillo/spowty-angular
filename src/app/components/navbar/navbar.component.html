@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md  navbar-inverse navbar-light bg-light">
 
     <a class="navbar-brand" routerLink="home">
         <i class="fas fa-music"></i>
@@ -33,7 +33,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search some music..." aria-label="Search">
+            <input class="form-control mr-sm-2" (keyup)="search(busqueda.value)" #busqueda type="search" placeholder="Search some music..." aria-label="Search">
         </form>
     </div>
 </nav>
