@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // ROUTES
 import { ROUTES } from './app.routes';
@@ -16,6 +17,7 @@ import { TimeTrackPipe } from './pipes/time-track.pipe';
 // PAGES
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MusicPanelComponent } from './pages/music-panel/music-panel.component';
 
 // COMPONENTS
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -27,11 +29,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NoimagePipe,
     TimeTrackPipe,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    MusicPanelComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
 
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="home">
         <i class="fas fa-music"></i>
     </a>
     <!-- TOGGLER -->
@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active" routerLinkActive="active">
-                <a class="nav-link" routerLink="home">SPOWTY</a>
+                <a class="nav-link" routerLink="spowty">SPOWTY</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="home">MyList <i class="fas fa-play"></i></a>
@@ -29,12 +29,11 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Chat <i class="fas fa-comments"></i></a>
+                <a class="nav-link disabled">Chat <i class="fas fa-comments"></i></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search some music..." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
