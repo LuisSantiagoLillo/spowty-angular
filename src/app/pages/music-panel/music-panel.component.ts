@@ -12,9 +12,7 @@ export class MusicPanelComponent implements OnInit {
   @Input() busqueda;
   type = false;
   data: any[] = [];
-  loading = true;
-  error: boolean;
-errorService: any[] = [];
+  errorService: any[] = [];
 
   constructor(
     private _spotifyService: SpotifyAPIService,
@@ -46,14 +44,10 @@ requestInfo(elemento_buscado) {
     .subscribe((resp: any) => {
       // console.log(resp);
       this.data = resp.albums.items;
-
-      this.error = false;
-      this.loading = false;
     }, (errorService) => {
       // console.log(errorService);
-      this.error = true;
       this.errorService = errorService;
-      // ES CLAVE POR SI RECARGAN DESDE TOP 20!
+      // ES CLAVE POR SI RECARGAN DESDE SPOWTY
       this.requestInfo(elemento_buscado);
     });
 
@@ -64,11 +58,8 @@ requestInfo(elemento_buscado) {
       // console.log(resp);
       this.data = resp.artists.items;
 
-      this.error = false;
-      this.loading = false;
     }, (errorService) => {
       // console.log(errorService);
-      this.error = true;
       this.errorService = errorService;
     });
  }

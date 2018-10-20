@@ -9,7 +9,6 @@ import { SpotifyAPIService } from './services/spotify-api.service';
 export class AppComponent {
   title = 'spowty';
 
-
   constructor(_spowtyAPI: SpotifyAPIService) {
     // Instance the SpotifyAPI Service to get the TOKEN and stored in the Service
   }

@@ -18,9 +18,15 @@ import { TimeTrackPipe } from './pipes/time-track.pipe';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MusicPanelComponent } from './pages/music-panel/music-panel.component';
+import { AlbumPanelComponent } from './pages/album-panel/album-panel.component';
+import { ArtistPanelComponent } from './pages/artist-panel/artist-panel.component';
 
 // COMPONENTS
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { SearchPanelComponent } from './pages/search-panel/search-panel.component';
+import { ErrorComponent } from './components/error/error.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +36,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     TimeTrackPipe,
     HomeComponent,
     NavbarComponent,
-    MusicPanelComponent
+    MusicPanelComponent,
+    AlbumPanelComponent,
+    ArtistPanelComponent,
+    LoadingComponent,
+    SearchPanelComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

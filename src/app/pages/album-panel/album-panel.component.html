@@ -1,0 +1,36 @@
+<div class="container animated fadeIn rounded">
+    <div class="row bg-dark text-light pt-4 pb-2 center">
+        <div class="col">
+            <h3>{{album.name}}</h3>
+        </div>
+        <div class="col">
+            <button *ngFor="let artist of album.artists" (click)="searchArtist(artist.id)" class="btn btn-light m-1">{{artist.name}}</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container animated fadeIn center rounded">
+    <div class="row bg-light">
+        <div class="col">
+            <div class="container pb-4">
+                <div class="row mt-2" *ngFor="let track of tracks">
+                    <div class="col mt-1 border-bottom">
+                        <span class="badge badge-dark">Track {{track.track_number}}</span>
+                        <span class="badge badge-light ml-2">{{track.duration_ms | timeTrack}} <i class="far fa-clock"></i></span>
+                        <h5>{{track.name}}</h5>
+                    </div>
+                    <div class="col mt-1 border-bottom">
+                        <div class="input-group">
+
+                            <iframe [src]="track.uri | domsecure" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            <div class="input-group-prepend">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

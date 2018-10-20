@@ -10,14 +10,15 @@ export class SpotifyAPIService {
   // token is used in has_token
   private token;
   public hasToken = false;
+  public loading = true;
 
   constructor(private http: HttpClient) {
-    console.log('Spotify Service Activo');
+   //  console.log('Spotify Service Activo');
     this.getTokenAPIspotify()
       .then(resp => {
         this.token = resp.access_token;
         this.hasToken = true;
-        console.log('COnstructor: ', this.token);
+        // console.log('COnstructor: ', this.token);
       } );
   }
 
@@ -26,8 +27,7 @@ export class SpotifyAPIService {
     this.getTokenAPIspotify()
       .then(resp => {
         this.token = resp.access_token;
-        this.hasToken = true;
-        console.log('COnstructor: ', this.token);
+        // console.log('COnstructor: ', this.token);
       } );
   }
 
@@ -38,13 +38,18 @@ export class SpotifyAPIService {
       .then(resp => {
         this.token = resp.access_token;
         this.hasToken = true;
-        console.log('Constructor: ', this.token);
+        // console.log('Constructor: ', this.token);
       } );
-
       flag = await this.stop();
     } while (!flag);
   }
 
+  /*************************************************/
+
+  /** FUNCTION TO MANAGE THE LOADING WHEN REQUEST THE INF */
+  setLoading(status: boolean) {
+    this.loading = status;
+  }
   /*************************************************/
 
   async stop() {
@@ -81,10 +86,14 @@ export class SpotifyAPIService {
 
   /** REQUEST INFO FROM SPOTIFY API */
   obtenerNuevosExitos() {
+    this.setLoading(true);
+
       const headers = new HttpHeaders({
           'Authorization': `Bearer ${this.token}`
         });
       const urlGetReleases =  `https://api.spotify.com/v1/browse/new-releases`;
+      this.setLoading(false);
+
       return this.http.get(`${urlGetReleases}?limit=20`, {headers});
   }
 

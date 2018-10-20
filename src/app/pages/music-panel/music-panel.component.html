@@ -3,11 +3,11 @@
         <div class="col">
             <div class="card-columns animated fadeIn" *ngIf="type">
                 <div *ngFor="let exito of data" class="card">
-                    <img [src]="exito.images | noimage" alt="" class="card-img-top">
+                    <img [src]="exito.images | noimage" alt="" class="card-img-top img-circle img-fluid">
                     <div class="card-body">
                         <h5 class="card-title">{{exito.name}}</h5>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button (click)="searchArtist(artist.id)" *ngFor="let artist of exito.artists" type="button" class="btn btn-primary">{{artist.name}}</button>
+                            <button (click)="searchAlbum(exito.id)" *ngFor="let artist of exito.artists" type="button" class="btn btn-primary">{{artist.name}}</button>
                         </div>
                         <!--<span *ngFor="let artist of exito.artists" class="badge badge-pill badge-primary">{{artist.name}}</span>-->
                         <p class="card-text">{{exito.artists.name}}</p>

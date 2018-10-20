@@ -1,0 +1,80 @@
+<div class="container animated fadeIn">
+    <div class="row">
+        <div class="col" *ngIf="!loading">
+
+            <div class="card  bg-dark text-light">
+                <div class="card-body">
+                    <h5 class="card-title">{{data.name}} <span class="badge badge-pill badge-primary">Popularity: {{data.popularity}}</span></h5>
+                    <p class="card-text  bg-dark "><small class="text-light">Number of Albums: {{albums.length}}</small> - <small class="text-light">Number of Hits: {{tracks.length}}</small></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col" *ngIf="!loading">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="link_albums" (click)="changeAlbum_Track('albums')">Albums</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="link_tracks" (click)="changeAlbum_Track('tracks')">Hits</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!-- MUESTRA LOS ALBUMS DEL ARTISTA -->
+                <div class="card-body animated fadeIn" *ngIf="albumsORtracks">
+                    <div class="card-columns" *ngIf="!loading">
+                        <div class="card" *ngFor="let album of albums">
+                            <div class="card-body">
+                                <img [src]="album.images | noimage" alt="" class="card-img-top">
+                                <div class="card-body">
+                                    <!-- <h5 class="card-title">{{album.release_date}}</h5> -->
+                                    <button (click)="searchAlbum(album.id)" class="btn-block btn-lg btn-success">{{album.name}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- MUESTRA LOS TRACKS DEL ARTISTA -->
+                <div class="animated fadeIn mb-4" *ngIf="!albumsORtracks">
+
+                    <div class="container">
+                        <div class="row mt-3" *ngFor="let track of tracks">
+                            <div class="col border-bottom">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 ">
+                                            <img [src]="track.album.images | noimage" alt="track.album.name" class="img-thumbnail rounded-circle img-100">
+                                        </div>
+                                        <div class="col-12 ">
+                                            <h5>{{track.name}} <span class="badge badge-light ml-2">{{track.duration_ms | timeTrack}} <i class="far fa-clock"></i></span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col border-bottom">
+                                <div class="input-group">
+                                    <iframe [src]="track.uri | domsecure" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                    <div class="input-group-prepend">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
