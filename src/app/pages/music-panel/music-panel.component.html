@@ -11,7 +11,7 @@
                         </div>
                         <!--<span *ngFor="let artist of exito.artists" class="badge badge-pill badge-primary">{{artist.name}}</span>-->
                         <p class="card-text">{{exito.artists.name}}</p>
-                        <iframe [src]="exito.uri | domsecure" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <iframe [src]="exito.uri | domsecure" class="" [ngClass]="{'smallScreen-iframe' : lessIframe}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </div>
                 </div>
             </div>

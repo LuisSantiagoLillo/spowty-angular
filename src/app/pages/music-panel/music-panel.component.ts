@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { SpotifyAPIService } from 'src/app/services/spotify-api.service';
 
@@ -13,6 +13,7 @@ export class MusicPanelComponent implements OnInit {
   type = false;
   data: any[] = [];
   errorService: any[] = [];
+  lessIframe: boolean = screen.width <= 1200 && screen.width >= 570;
 
   constructor(
     private _spotifyService: SpotifyAPIService,
@@ -26,6 +27,14 @@ export class MusicPanelComponent implements OnInit {
     }
 
   ngOnInit() {
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    this.lessIframe = screen.width <= 1200 && screen.width >= 570;
+
   }
 
 

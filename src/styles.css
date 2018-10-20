@@ -84,6 +84,11 @@ hr {
     width: 100px;
 }
 
+.smallScreen-iframe {
+    height: 80px;
+    width: 80px;
+}
+
 
 /* SCROLL */
 
