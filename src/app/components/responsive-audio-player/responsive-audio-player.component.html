@@ -1,0 +1,9 @@
+<div class="input-group">
+    <div class="input-group-vertical">
+        <iframe [src]="track.uri | domsecure" class="btn-block" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <!-- <audio [src]="track.uri | domsecure" type="audio/mpeg" id="audio1" class="btn-block rounded" preload controls>Your browser does not support HTML5 Audio! 😢</audio> -->
+        <button class="btn btn-dark btn-block" *ngIf="!isAdded(track.name, track.id)" (click)="addItem(track.name, track.uri)">
+                <i class="fas fa-plus-circle"></i>
+              </button>
+    </div>
+</div>

@@ -29,7 +29,7 @@ export class AlbumPanelComponent implements OnInit {
   async getDatos(id) {
     await this._spotifyService.getAlbumInfo(id)
     .subscribe((resp: any) => {
-      console.log(resp);
+      // console.log(resp);
       this.tracks = resp.tracks.items;
       this.album = resp;
       // console.log(this.tracks);

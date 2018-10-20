@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MusicPanelComponent } from './pages/music-panel/music-panel.component';
 import { AlbumPanelComponent } from './pages/album-panel/album-panel.component';
 import { ArtistPanelComponent } from './pages/artist-panel/artist-panel.component';
+import { ListPanelComponent } from './pages/list-panel/list-panel.component';
 
 
 // DEFINE THE ROUTES APP
@@ -12,6 +13,8 @@ export const ROUTES: Routes = [
     {path: 'spowty/:id', component: MusicPanelComponent},
     {path: 'album/:id', component: AlbumPanelComponent},
     {path: 'artist/:id', component: ArtistPanelComponent},
+    {path: 'list', component: ListPanelComponent},
+
     // Default routes
     {path: '', pathMatch: 'full', component: HomeComponent},
     {path: '**', pathMatch: 'full', component: HomeComponent}

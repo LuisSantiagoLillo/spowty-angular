@@ -6,12 +6,19 @@
                     <img [src]="exito.images | noimage" alt="" class="card-img-top img-circle img-fluid">
                     <div class="card-body">
                         <h5 class="card-title">{{exito.name}}</h5>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button (click)="searchAlbum(exito.id)" *ngFor="let artist of exito.artists" type="button" class="btn btn-primary">{{artist.name}}</button>
+                        <div aria-label="Basic example">
+                            <!-- class="btn-group" role="group" -->
+                            <button (click)="searchAlbum(exito.id)" *ngFor="let artist of exito.artists" type="button" class="btn btn-primary btn-block">{{artist.name}}</button>
                         </div>
                         <!--<span *ngFor="let artist of exito.artists" class="badge badge-pill badge-primary">{{artist.name}}</span>-->
                         <p class="card-text">{{exito.artists.name}}</p>
-                        <iframe [src]="exito.uri | domsecure" class="" [ngClass]="{'smallScreen-iframe' : lessIframe}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+                        <!-- COMPONENT SONG-IFRAME 
+                        <app-song-iframe [track]="exito"></app-song-iframe> -->
+
+                        <!-- COMPONENT RESPONSIVE AUDIO PLAYER -->
+                        <app-responsive-audio-player [track]="exito"></app-responsive-audio-player>
+
                     </div>
                 </div>
             </div>

@@ -62,7 +62,8 @@
                             </div>
                             <div class="col border-bottom">
                                 <div class="input-group">
-                                    <iframe [src]="track.uri | domsecure" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                    <!-- COMPONENT SONG-IFRAME -->
+                                    <app-song-iframe [track]="track"></app-song-iframe>
                                     <div class="input-group-prepend">
                                     </div>
                                 </div>

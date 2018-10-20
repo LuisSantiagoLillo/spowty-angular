@@ -1,0 +1,10 @@
+<div class="col mt-1">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-dark" *ngIf="!isAdded(track.name, track.id)" (click)="addItem(track.name, track.uri)">
+            <i class="fas fa-plus-circle"></i>
+        </button>
+            <iframe [src]="track.uri | domsecure" class="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+    </div>
+</div>

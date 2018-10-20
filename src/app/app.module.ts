@@ -20,12 +20,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { MusicPanelComponent } from './pages/music-panel/music-panel.component';
 import { AlbumPanelComponent } from './pages/album-panel/album-panel.component';
 import { ArtistPanelComponent } from './pages/artist-panel/artist-panel.component';
+import { ListPanelComponent } from './pages/list-panel/list-panel.component';
 
 // COMPONENTS
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { SearchPanelComponent } from './pages/search-panel/search-panel.component';
 import { ErrorComponent } from './components/error/error.component';
+import { SongIframeComponent } from './components/song-iframe/song-iframe.component';
+import { ResponsiveAudioPlayerComponent } from './components/responsive-audio-player/responsive-audio-player.component';
 
 
 @NgModule({
@@ -41,7 +44,10 @@ import { ErrorComponent } from './components/error/error.component';
     ArtistPanelComponent,
     LoadingComponent,
     SearchPanelComponent,
-    ErrorComponent
+    ErrorComponent,
+    ListPanelComponent,
+    SongIframeComponent,
+    ResponsiveAudioPlayerComponent
   ],
   imports: [
     BrowserModule,
