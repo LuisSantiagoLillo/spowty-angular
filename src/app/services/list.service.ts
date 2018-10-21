@@ -6,11 +6,49 @@ import { Injectable } from '@angular/core';
 export class ListService {
 
   lista: Item[] = [];
+  listas: Listas[] = [];
 
   constructor() {
     this.cargarStorage();
   }
 
+
+  // ----------------------------------------------------------------------------------------------------- //
+  getLists(): Listas[] {
+    return this.listas;
+  }
+
+
+  createNewList(nameList, desc) {
+    const newList: Listas = {
+      name: nameList,
+      description: desc,
+      items: []
+    };
+    this.listas.push(newList);
+  }
+
+
+  guardarStorageListas(): void {
+    localStorage.setItem('listas', JSON.stringify(this.listas));
+  }
+
+  cargarStorageListas(): void {
+    if (localStorage.getItem('listas')) {
+      this.lista = JSON.parse(localStorage.getItem('listas'));
+    } else {
+      this.lista = [];
+    }
+  }
+
+
+
+
+
+
+
+// ----------------------------------------------------------------------------------------------------- //
+// MANEJA LA LISTA PRINCIPAL DONDE SE ACUMULAN LAS CANCIONES QUE SERÁN REDIRIGIDAS A OTRAS LISTAS
   getLista(): Item[] {
     return this.lista;
   }
@@ -64,8 +102,13 @@ export class ListService {
 
 }
 
-
 export interface Item {
   name: string;
   idTrack: string;
+}
+
+export interface Listas {
+  name: string;
+  description: string;
+  items: Item[];
 }

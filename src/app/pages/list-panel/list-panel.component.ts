@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListService } from '../../services/list.service';
+import { ListService, Item } from '../../services/list.service';
 
 @Component({
   selector: 'app-list-panel',
@@ -7,12 +7,25 @@ import { ListService } from '../../services/list.service';
   styleUrls: ['./list-panel.component.css']
 })
 export class ListPanelComponent implements OnInit {
-
+  myList: Item[];
   constructor(
-    _listService: ListService
-  ) { }
+    private _listService: ListService
+  ) {
+    this.myList = _listService.getLista();
+    console.log(this.myList);
+  }
 
   ngOnInit() {
+  }
+
+  removeItem(name: string, idTrack: string): void {
+    const item: Item = {
+      name: name,
+      idTrack: idTrack
+    };
+
+    this._listService.removeItem(item);
+    this.myList = this._listService.getLista();
   }
 
 }

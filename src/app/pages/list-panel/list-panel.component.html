@@ -1,7 +1,49 @@
-<ul class="list-group">
-    <li class="list-group-item active">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <li class="list-group-item active">MyList</li>
+                </a>
+                <ul class="collapse" id="collapseExample">
+                    <li class="list-group-item" *ngFor="let item of myList">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button (click)="removeItem(item.name, item.idTrack)" class="btn btn-danger m-2">X</button>
+                            </div>
+                            <iframe [src]="item.idTrack | domsecure" class="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            <div class="input-group-prepend">
+                                <!-- SE PUEDE AÑADIR OTRO BOTON AQUI -->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container fixed-bottom mb-5">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-lg btn-dark">New List</button>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col bg-light rounded">
+            <form class="mt-2 mb-2">
+                <div class="form-group">
+                    <label>List Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="The name of your new list...">
+                    <small class="form-text text-muted">You will add new music to your list by the name.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <input type="text" class="form-control" id="desc" placeholder="A simple description...">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

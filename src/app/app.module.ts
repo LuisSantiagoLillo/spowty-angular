@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ROUTES } from './app.routes';
 
 // SERVICES - PROVIDERS
+import { ListService } from 'src/app/services/list.service';
 
 // PIPES
 import { DomsecurePipe } from './pipes/domsecure.pipe';
@@ -54,7 +55,9 @@ import { ResponsiveAudioPlayerComponent } from './components/responsive-audio-pl
     RouterModule.forRoot(ROUTES, { useHash: true }),
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
