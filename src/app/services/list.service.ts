@@ -10,6 +10,9 @@ export class ListService {
 
   constructor() {
     this.cargarStorage();
+    this.cargarStorageListas();
+
+
   }
 
 
@@ -26,18 +29,30 @@ export class ListService {
       items: []
     };
     this.listas.push(newList);
+    this.guardarStorageListas();
+  }
+
+  checkNameList(name: string): boolean {
+    const item = this.listas.find( itemLista => {
+      return itemLista.name === name;
+    });
+    if ( item === undefined) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
 
   guardarStorageListas(): void {
-    localStorage.setItem('listas', JSON.stringify(this.listas));
+    localStorage.setItem('myLists', JSON.stringify(this.listas));
   }
 
   cargarStorageListas(): void {
-    if (localStorage.getItem('listas')) {
-      this.lista = JSON.parse(localStorage.getItem('listas'));
+    if (localStorage.getItem('myLists')) {
+      this.listas = JSON.parse(localStorage.getItem('myLists'));
     } else {
-      this.lista = [];
+      this.listas = [];
     }
   }
 

@@ -30,6 +30,7 @@ import { SearchPanelComponent } from './pages/search-panel/search-panel.componen
 import { ErrorComponent } from './components/error/error.component';
 import { SongIframeComponent } from './components/song-iframe/song-iframe.component';
 import { ResponsiveAudioPlayerComponent } from './components/responsive-audio-player/responsive-audio-player.component';
+import { CommonErrorComponent } from './components/errorComponents/common-error/common-error.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ResponsiveAudioPlayerComponent } from './components/responsive-audio-pl
     ErrorComponent,
     ListPanelComponent,
     SongIframeComponent,
-    ResponsiveAudioPlayerComponent
+    ResponsiveAudioPlayerComponent,
+    CommonErrorComponent,
   ],
   imports: [
     BrowserModule,
