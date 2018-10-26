@@ -1,14 +1,13 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MusicListService, Item, Lists } from 'src/app/services/music-list.service';
 
 @Component({
-  selector: 'app-song-iframe',
-  templateUrl: './song-iframe.component.html',
-  styleUrls: ['./song-iframe.component.css']
+  selector: 'app-audio-player',
+  templateUrl: './audio-player.component.html',
+  styleUrls: ['./audio-player.component.css']
 })
-export class SongIframeComponent implements OnInit {
-  lessIframe: boolean = screen.width <= 1200 && screen.width >= 570;
 
+export class AudioPlayerComponent implements OnInit {
   @Input() track: any;
   newListHide: boolean = false;
   error: boolean = false;
@@ -23,7 +22,6 @@ export class SongIframeComponent implements OnInit {
     private _listService: MusicListService
   ) {
     this.lists = _listService.getLists();
-
   }
 
   ngOnInit() {

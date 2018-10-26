@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ListService, Item, Listas } from '../../services/list.service';
+import { MusicListService, Lists, Item } from 'src/app/services/music-list.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-panel',
@@ -8,22 +9,25 @@ import { ListService, Item, Listas } from '../../services/list.service';
 })
 export class ListPanelComponent implements OnInit {
   newListHide: boolean = false;
-  myList: Item[];
-  myLists: Listas[];
+  // myList: Item[];
+  myLists: Lists[];
   error: boolean = false;
   title: string = '';
   message: string = '';
   color: string = 'warning';
 
   constructor(
-    private _listService: ListService
+    private _listService: MusicListService,
+    private router: Router
   ) {
-    this.myList = _listService.getLista();
     this.myLists = _listService.getLists();
-    console.log(this.myLists);
   }
 
   ngOnInit() {
+  }
+
+  navigateList(list: Item) {
+    this.router.navigate(['/list', list]);
   }
 
   removeItem(name: string, idTrack: string): void {
@@ -32,8 +36,8 @@ export class ListPanelComponent implements OnInit {
       idTrack: idTrack
     };
 
-    this._listService.removeItem(item);
-    this.myList = this._listService.getLista();
+    // this._listService.removeItem(item);
+    // this.myList = this._listService.getLista();
   }
 
   showError(message: string, color: string) {

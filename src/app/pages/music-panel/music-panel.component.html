@@ -13,11 +13,11 @@
                         <!--<span *ngFor="let artist of exito.artists" class="badge badge-pill badge-primary">{{artist.name}}</span>-->
                         <p class="card-text">{{exito.artists.name}}</p>
 
-                        <!-- COMPONENT SONG-IFRAME 
-                        <app-song-iframe [track]="exito"></app-song-iframe> -->
+                        <!-- COMPONENT AUDIO PLAYER -->
+                        <app-audio-player [track]="exito"></app-audio-player>
 
-                        <!-- COMPONENT RESPONSIVE AUDIO PLAYER -->
-                        <app-responsive-audio-player [track]="exito"></app-responsive-audio-player>
+                        <!-- COMPONENT RESPONSIVE AUDIO PLAYER
+                        <app-responsive-audio-player [track]="exito"></app-responsive-audio-player> -->
 
                     </div>
                 </div>

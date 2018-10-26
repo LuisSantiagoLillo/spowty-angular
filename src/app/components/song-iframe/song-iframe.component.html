@@ -1,10 +1,34 @@
 <div class="col mt-1">
     <div class="input-group">
         <div class="input-group-prepend">
-            <button class="btn btn-outline-dark" *ngIf="!isAdded(track.name, track.id)" (click)="addItem(track.name, track.uri)">
+            <button class="btn btn-outline-dark" (click)="newListHide = !newListHide">
             <i class="fas fa-plus-circle"></i>
         </button>
             <iframe [src]="track.uri | domsecure" class="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="card text-center fixed-bottom mb-5 mr-4 ml-4 animated fadeIn container-newList-300" [ngClass]="{'container-newList-300': !newListHide, 'container-newList-0': newListHide}">
+        <div class="card-header">
+            <h5 class="">Select a List: </h5>
+        </div>
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Lists</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="optionSelected">
+                  <option *ngFor="let select of lists" value={{select.name}} >{{select.name}}</option>
+                </select>
+            </div>
+            <app-common-error *ngIf="error" [title]="title" [message]="message" [color]="color"></app-common-error>
+        </div>
+        <div class="card-footer text-muted">
+            <button type="button" class="btn btn-secondary mr-2" (click)="newListHide = !newListHide">Close</button>
+            <button type="button" class="btn btn-primary ml-2" (click)="addItem(track.name, track.uri)">Save changes</button>
         </div>
     </div>
 </div>

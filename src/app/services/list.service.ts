@@ -11,16 +11,25 @@ export class ListService {
   constructor() {
     this.cargarStorage();
     this.cargarStorageListas();
-
-
   }
-
+ // ALL HAS BEEN DEPRECATED AND REPLACED BY MUSIC-LIST-SERVICE //
+ // ALL HAS BEEN DEPRECATED AND REPLACED BY MUSIC-LIST-SERVICE //
+ // ALL HAS BEEN DEPRECATED AND REPLACED BY MUSIC-LIST-SERVICE //
+ // ALL HAS BEEN DEPRECATED AND REPLACED BY MUSIC-LIST-SERVICE //
 
   // ----------------------------------------------------------------------------------------------------- //
   getLists(): Listas[] {
     return this.listas;
   }
 
+  addNewSong(name: string, item: Item) {
+    this.listas.forEach((itemLista) => {
+      if ( itemLista.name === name ) {
+        itemLista.items.push(item);
+      }
+    });
+    this.guardarStorageListas();
+  }
 
   createNewList(nameList, desc) {
     const newList: Listas = {

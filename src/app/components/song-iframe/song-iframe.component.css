@@ -1,0 +1,11 @@
+.container-newList-300 {
+    bottom: -400px;
+    -webkit-transition: bottom 1s;
+    /* Safari */
+}
+
+.container-newList-0 {
+    bottom: 0;
+    -webkit-transition: bottom 1s;
+    /* Safari */
+}

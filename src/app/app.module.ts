@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 // ROUTES
 import { ROUTES } from './app.routes';
@@ -31,6 +33,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { SongIframeComponent } from './components/song-iframe/song-iframe.component';
 import { ResponsiveAudioPlayerComponent } from './components/responsive-audio-player/responsive-audio-player.component';
 import { CommonErrorComponent } from './components/errorComponents/common-error/common-error.component';
+import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
+import { ItemsListComponent } from './pages/list-panel/items-list/items-list.component';
 
 
 @NgModule({
@@ -51,8 +55,11 @@ import { CommonErrorComponent } from './components/errorComponents/common-error/
     SongIframeComponent,
     ResponsiveAudioPlayerComponent,
     CommonErrorComponent,
+    AudioPlayerComponent,
+    ItemsListComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     HttpClientModule
