@@ -14,7 +14,6 @@ export class AlbumPanelComponent implements OnInit {
   tracks;
   loading = true;
 
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private _spotifyService: SpotifyAPIService,
@@ -32,7 +31,6 @@ export class AlbumPanelComponent implements OnInit {
       // console.log(resp);
       this.tracks = resp.tracks.items;
       this.album = resp;
-      // console.log(this.tracks);
     });
 
     this.loading = false;

@@ -7,3 +7,7 @@
     bottom: 0;
     -webkit-transition: bottom 1s;
 }
+
+.collapse {
+    toggle: true
+}

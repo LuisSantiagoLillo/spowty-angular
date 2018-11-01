@@ -11,7 +11,7 @@
 
 
 
-<div class="card text-center fixed-bottom mb-5 mr-4 ml-4 animated fadeIn container-newList-300" [ngClass]="{'container-newList-300': !newListHide, 'container-newList-0': newListHide}">
+<div style="max-width: 20rem;" class="card text-center fixed-bottom mb-5 mr-4 ml-4 animated fadeIn container-newList-300" [ngClass]="{'container-newList-300': !newListHide, 'container-newList-0': newListHide}">
     <div class="card-header">
         <h5 class="">Select a List: </h5>
     </div>
@@ -21,8 +21,8 @@
                 <label class="input-group-text" for="inputGroupSelect01">Lists</label>
             </div>
             <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="optionSelected">
-              <option *ngFor="let select of lists" value={{select.name}} >{{select.name}}</option>
-            </select>
+                          <option *ngFor="let select of lists" value={{select.name}} >{{select.name}}</option>
+                        </select>
         </div>
         <app-common-error *ngIf="error" [title]="title" [message]="message" [color]="color"></app-common-error>
     </div>
@@ -31,6 +31,7 @@
         <button type="button" class="btn btn-primary ml-2" (click)="addItem(track.name, track.uri)">Save changes</button>
     </div>
 </div>
+
 
 
 

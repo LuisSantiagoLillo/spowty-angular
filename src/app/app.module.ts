@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+// ANGULAR 7
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 // ROUTES
 import { ROUTES } from './app.routes';
@@ -30,11 +31,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { SearchPanelComponent } from './pages/search-panel/search-panel.component';
 import { ErrorComponent } from './components/error/error.component';
-import { SongIframeComponent } from './components/song-iframe/song-iframe.component';
-import { ResponsiveAudioPlayerComponent } from './components/responsive-audio-player/responsive-audio-player.component';
+import { SongIframeComponent } from './components/iframeComponents/song-iframe/song-iframe.component';
+import { ResponsiveAudioPlayerComponent } from './components/iframeComponents/responsive-audio-player/responsive-audio-player.component';
 import { CommonErrorComponent } from './components/errorComponents/common-error/common-error.component';
-import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
+import { AudioPlayerComponent } from './components/iframeComponents/audio-player/audio-player.component';
 import { ItemsListComponent } from './pages/list-panel/items-list/items-list.component';
+import { ItemlistIframeComponent } from './components/iframeComponents/itemlist-iframe/itemlist-iframe.component';
 
 
 @NgModule({
@@ -57,12 +59,15 @@ import { ItemsListComponent } from './pages/list-panel/items-list/items-list.com
     CommonErrorComponent,
     AudioPlayerComponent,
     ItemsListComponent,
+    ItemlistIframeComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    HttpClientModule
+    HttpClientModule,
+    // ANGULAR 7
+    ScrollingModule
   ],
   providers: [
     ListService

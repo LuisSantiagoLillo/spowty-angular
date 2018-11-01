@@ -1,3 +1,55 @@
-<p>
-    {{listName}}
-</p>
+<div *ngIf="visible" class="jumbotron animated fadeIn">
+    <h3>You need to add some awesome music to your list.</h3>
+</div>
+
+<cdk-virtual-scroll-viewport class="list-container card-columns" itemSize="50">
+    <div *cdkVirtualFor="let item of listSelected.items; let i = index; let cont = count" class="float-left ml-2 animated fadeIn">
+        <div class="card rounded">
+            <div class="card-body">
+                <p><span class="badge badge-primary card-title">{{i+1}}/{{cont}}</span> {{item.name}}</p>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="btn-group dropleft">
+                            <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu">
+                                <button class="btn btn-info dropdown-item active mb-1" type="button" (click)="itemAdded(item)"><i class="fas fa-plus"></i> Add Song</button>
+                                <button class="btn btn-danger dropdown-item active" type="button" (click)="itemAdded(item)"><i class="fas fa-trash"></i> Remove Song</button>
+                            </div>
+                        </div>
+                        <audio [src]="item.idTrack | domsecure" controls></audio>
+                        <!--
+                        <iframe [src]="item.idTrack | domsecure" class="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</cdk-virtual-scroll-viewport>
+
+
+
+
+
+<!-- MODAL SELECT NEW LIST -->
+<div style="max-width: 20rem;" class="card text-center fixed-bottom mb-5 mr-4 ml-4 animated fadeIn container-newList-300" [ngClass]="{'container-newList-300': !newListHide, 'container-newList-0': newListHide}">
+    <div class="card-header">
+        <h5 class="">Select a List: </h5>
+    </div>
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Lists</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="optionSelected">
+                                      <option *ngFor="let select of lists" value={{select.name}} >{{select.name}}</option>
+                                    </select>
+        </div>
+        <app-common-error *ngIf="error" [title]="title" [message]="message" [color]="color"></app-common-error>
+    </div>
+    <div class="card-footer text-muted">
+        <button type="button" class="btn btn-secondary mr-2" (click)="newListHide = !newListHide">Close</button>
+        <button type="button" class="btn btn-primary ml-2" (click)="addItem()">Save changes</button>
+    </div>
+</div>
+<!-- ************************************************** -->

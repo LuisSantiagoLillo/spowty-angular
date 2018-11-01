@@ -1,17 +1,29 @@
-<<!-- LISTS OF MUSIC -->
-    <div class="container-fluid animated fadeIn">
-        <div class="row">
-
-            <div class="col-12 col-md-3 col-lg-2">
-                <div class="list-group">
-                    <a routerLinkActive="active" [routerLink]="list.name" class="list-group-item list-group-item-action text-center" *ngFor="let list of myLists">{{list.name | uppercase}}</a>
-                </div>
+<!-- LISTS OF MUSIC -->
+<div class="container-fluid animated fadeIn">
+    <button class="btn btn-dark mb-2 active" type="button" data-toggle="collapse" data-target="#collapseListGroup" aria-expanded="true" aria-pressed="true" aria-controls="collapseListGroup">
+            <i class="fas fa-compress"></i> Lists
+    </button>
+    <div class="row">
+        <div class="col-12 collapse" id="collapseListGroup">
+            <ul class="list-inline">
+                <li class="list-inline-item" *ngFor="let list of myLists">
+                    <button type="button" class="btn btn-light text-center mt-1" routerLinkActive="active" [routerLink]="list.name">{{list.name | uppercase}}</button>
+                </li>
+            </ul>
+            <div class="list-group">
             </div>
+        </div>
+    </div>
 
-            <div class="col-12 col-md-9 col-lg-10">
-                <router-outlet></router-outlet>
-            </div>
-            <!--
+    <div class="row">
+        <div class="col-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+
+
+    <!--
             <div class="col">
                 <ul class="list-group" *ngFor="let list of myLists">
                     <a class="btn btn-sm btn-primary mt-2" data-toggle="collapse" href="#{{list.name}}" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -32,36 +44,35 @@
                 </ul>
             </div>
 -->
+</div>
+
+
+<!-- MODAL CREATE A NEW LIST -->
+<div style="max-width: 20rem;" class="container fixed-bottom mb-5 mr-4 ml-4 animated fadeIn" [ngClass]="{'container-newList-300': !newListHide, 'container-newList-0': newListHide}" id="container-newList">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-lg btn-dark" (click)="newListHide = !newListHide">New List</button>
+        </div>
+        <div class="col">
+            <app-common-error *ngIf="error" [title]="title" [message]="message" [color]="color"></app-common-error>
         </div>
     </div>
+    <div class="row mt-3">
+        <div class="col bg-light rounded border border-dark">
+            <form class="mt-2 mb-2">
+                <div class="form-group">
+                    <label>List Name <small>*required</small></label>
+                    <input type="text" class="form-control" id="name" placeholder="The name of your new list...">
+                    <small class="form-text text-muted">You will add new music to your list by the name.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <input type="text" class="form-control" id="desc" placeholder="A simple description...">
+                </div>
 
-
-    <!-- MODAL CREATE A NEW LIST -->
-    <div class="container fixed-bottom mb-5 mr-4 ml-4 animated fadeIn" [ngClass]="{'container-newList-300': !newListHide, 'container-newList-0': newListHide}" id="container-newList">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-lg btn-dark" (click)="newListHide = !newListHide">New List</button>
-            </div>
-            <div class="col">
-                <app-common-error *ngIf="error" [title]="title" [message]="message" [color]="color"></app-common-error>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col bg-light rounded border border-dark">
-                <form class="mt-2 mb-2">
-                    <div class="form-group">
-                        <label>List Name <small>*required</small></label>
-                        <input type="text" class="form-control" id="name" placeholder="The name of your new list...">
-                        <small class="form-text text-muted">You will add new music to your list by the name.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Description</label>
-                        <input type="text" class="form-control" id="desc" placeholder="A simple description...">
-                    </div>
-
-                    <button type="button" class="btn btn-primary btn-block" (click)="createNewList()">Create</button>
-                </form>
-            </div>
+                <button type="button" class="btn btn-primary btn-block" (click)="createNewList()">Create</button>
+            </form>
         </div>
     </div>
-    <!------------------------------------------------------>
+</div>
+<!------------------------------------------------------>
