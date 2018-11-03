@@ -15,6 +15,9 @@ export class ListPanelComponent implements OnInit {
   title: string = '';
   message: string = '';
   color: string = 'warning';
+  // Collapse List
+  collapse: boolean = true;
+  stringCollapse: string = '';
 
   constructor(
     private _listService: MusicListService,
@@ -26,6 +29,14 @@ export class ListPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  collapseList() {
+    this.collapse = !this.collapse;
+    if (this.collapse) {
+        this.stringCollapse = 'Hide List';
+    } else {
+      this.stringCollapse = 'Show List';
+    }
+  }
   navigateList(list: Item) {
     this.router.navigate(['/list', list]);
   }

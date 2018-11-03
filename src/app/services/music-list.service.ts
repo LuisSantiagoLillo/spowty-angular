@@ -39,26 +39,47 @@ export class MusicListService {
 
   addNewItemtoList(name: String, item: Item): boolean {
     let complete = false;
-    this.lists.forEach((itemLista) => {
-      if ( itemLista.name === name ) {
+    this.lists.forEach((itemList) => {
+      if ( itemList.name === name ) {
         complete = true;
-        itemLista.items.push(item);
+        itemList.items.push(item);
       }
     });
     if (complete) { this.saveStorageLists(); }
     return complete;
   }
 
-  removeItemtoList(name: String, item: Item): boolean {
+  removeItemtoList(list: Lists, item: Item): boolean {
     let complete = false;
-    this.lists.forEach((itemLista) => {
-      if ( itemLista.name === name ) {
-        itemLista.items.push(item);
-        complete = true;
-      }
+    list.items = list.items.filter( itemList => {
+      return itemList.name !== item.name;
     });
+
+    this.lists = this.lists.filter(itemList => {
+      return itemList.name !== list.name;
+    });
+
+    this.lists.push(list);
+    complete = true;
     if (complete) { this.saveStorageLists(); }
     return complete;
+  }
+
+  removeList(list: Lists) {
+    this.lists = this.lists.filter(itemList => {
+      return itemList.name !== list.name;
+    });
+    this.saveStorageLists();
+  }
+
+  changeList(list: Lists, name: string, description: string) {
+    this.lists = this.lists.filter(itemList => {
+      return itemList.name !== list.name;
+    });
+    list.name = name;
+    list.description = description;
+    this.lists.push(list);
+    this.saveStorageLists();
   }
 
   checkNameList(name: string): boolean {

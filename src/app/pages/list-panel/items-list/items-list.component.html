@@ -13,7 +13,7 @@
                             <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu">
                                 <button class="btn btn-info dropdown-item active mb-1" type="button" (click)="itemAdded(item)"><i class="fas fa-plus"></i> Add Song</button>
-                                <button class="btn btn-danger dropdown-item active" type="button" (click)="itemAdded(item)"><i class="fas fa-trash"></i> Remove Song</button>
+                                <button class="btn btn-danger dropdown-item active" type="button" (click)="removeItem(item)"><i class="fas fa-trash"></i> Remove Song</button>
                             </div>
                         </div>
                         <audio [src]="item.idTrack | domsecure" controls></audio>

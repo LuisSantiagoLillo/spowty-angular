@@ -84,6 +84,11 @@ hr {
     width: 100px;
 }
 
+.img-50 {
+    height: 50px;
+    width: 50px;
+}
+
 .smallScreen-iframe {
     height: 80px;
     width: 80px;

@@ -25,6 +25,8 @@ import { MusicPanelComponent } from './pages/music-panel/music-panel.component';
 import { AlbumPanelComponent } from './pages/album-panel/album-panel.component';
 import { ArtistPanelComponent } from './pages/artist-panel/artist-panel.component';
 import { ListPanelComponent } from './pages/list-panel/list-panel.component';
+import { ConfigurationsComponent } from './pages/configurations/configurations.component';
+import { ReportProblemsComponent } from './pages/report-problems/report-problems.component';
 
 // COMPONENTS
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -60,6 +62,8 @@ import { ItemlistIframeComponent } from './components/iframeComponents/itemlist-
     AudioPlayerComponent,
     ItemsListComponent,
     ItemlistIframeComponent,
+    ConfigurationsComponent,
+    ReportProblemsComponent,
   ],
   imports: [
     FormsModule,

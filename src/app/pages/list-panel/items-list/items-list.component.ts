@@ -49,7 +49,6 @@ export class ItemsListComponent implements OnInit {
       itemAdded(item) {
         this.newListHide = !this.newListHide;
         this.itemSelected = item;
-
       }
 
       addItem(): void {
@@ -67,8 +66,8 @@ export class ItemsListComponent implements OnInit {
         }
       }
 
-      removeItem(): void {
-
+      removeItem(item): void {
+          this.error = this._listService.removeItemtoList(this.listSelected, item);
       }
 
 

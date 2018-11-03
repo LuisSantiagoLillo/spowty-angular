@@ -5,6 +5,8 @@ import { AlbumPanelComponent } from './pages/album-panel/album-panel.component';
 import { ArtistPanelComponent } from './pages/artist-panel/artist-panel.component';
 import { ListPanelComponent } from './pages/list-panel/list-panel.component';
 import { ItemsListComponent } from './pages/list-panel/items-list/items-list.component';
+import { ConfigurationsComponent } from './pages/configurations/configurations.component';
+import { ReportProblemsComponent } from './pages/report-problems/report-problems.component';
 
 
 // DEFINE THE ROUTES APP
@@ -20,6 +22,9 @@ export const ROUTES: Routes = [
             {path: ':id', component: ItemsListComponent}
         ]
     },
+    {path: 'configurations', component: ConfigurationsComponent},
+    {path: 'report', component: ReportProblemsComponent},
+
 
     // Default routes
     {path: '', pathMatch: 'full', component: HomeComponent},

@@ -1,10 +1,10 @@
 <!-- LISTS OF MUSIC -->
 <div class="container-fluid animated fadeIn">
-    <button class="btn btn-dark mb-2 active" type="button" data-toggle="collapse" data-target="#collapseListGroup" aria-expanded="true" aria-pressed="true" aria-controls="collapseListGroup">
-            <i class="fas fa-compress"></i> Lists
+    <button class="btn btn-dark mb-2 active" type="button" aria-expanded="true" aria-pressed="true" (click)="collapseList()">
+            <i class="fas fa-compress"></i> {{this.stringCollapse}}
     </button>
-    <div class="row">
-        <div class="col-12 collapse" id="collapseListGroup">
+    <div class="row animated fadeIn" *ngIf="collapse">
+        <div class="col-12">
             <ul class="list-inline">
                 <li class="list-inline-item" *ngFor="let list of myLists">
                     <button type="button" class="btn btn-light text-center mt-1" routerLinkActive="active" [routerLink]="list.name">{{list.name | uppercase}}</button>
