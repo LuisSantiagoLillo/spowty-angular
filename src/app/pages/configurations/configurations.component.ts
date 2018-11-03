@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicListService, Lists, Item } from 'src/app/services/music-list.service';
+import { NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-configurations',
@@ -18,6 +19,15 @@ export class ConfigurationsComponent implements OnInit {
   title = '';
   message = '';
   color = '';
+  // ********
+  // ** User Form
+  user: Object = {
+    nick: null,
+    name: null,
+    lastName: null,
+    age: null,
+    email: null
+  };
   // ********
   constructor(
     private _listService: MusicListService,
@@ -77,4 +87,17 @@ export class ConfigurationsComponent implements OnInit {
     }, 5000);
   }
 
+// USER FORM
+  saveForm(forma: NgForm) {
+    if (forma.valid) {
+      console.log(forma.valid);
+    } else {
+      console.log(forma.valid);
+
+    }
+    console.log("ngForm", forma);
+    console.log('value', forma.value);
+    console.log(this.user);
+  }
+  // ***************
 }

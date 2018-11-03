@@ -38,7 +38,7 @@
                                     </fieldset>
                                     <fieldset class="col" *ngIf="!optionDrop">
                                         <div class="form-group col">
-                                            <label for="inputZip">Rename <span class="badge badge-danger">* Required</span></label>
+                                            <label for="inputZip">Rename <span  class="badge badge-danger">* Required</span></label>
                                             <input type="text" class="form-control" placeholder="{{this.listName}}" id="listName">
                                         </div>
                                         <div class="form-group col-12">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <button type="submit" class="btn btn-primary mt-2 mr-5" (click)="listChanged()" [ngClass]="{'btn-danger' : optionDrop}">{{this.listMessage}}</button>
+                                        <button type="" class="btn btn-primary mt-2 mr-5" (click)="listChanged()" [ngClass]="{'btn-danger' : optionDrop}">{{this.listMessage}}</button>
 
                                         <input class="form-check-input" type="checkbox" id="gridCheck" (click)="optionChanged()">
                                         <label class="form-check-label" for="gridCheck">
@@ -89,51 +89,36 @@
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                         <div class="card-body">
-                            <form>
+                            <form (ngSubmit)="saveForm(forma)" #forma="ngForm" novalidate="">
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputAddress2">Address 2</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">City</label>
-                                        <input type="text" class="form-control" id="inputCity">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputNickUser">Nick</label>
+                                        <input type="text" minlength="4" class="form-control" id="inputNickUser" [(ngModel)]="user.nick" name="nick" #nick="ngModel" required placeholder="Mozart1756">
+                                        <div *ngIf="nick.errors?.minlength">
+                                            <span class="badge badge-info">This field require {{nick.errors.minlength.requiredLength}} characters or more.</span>
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputState">State</label>
-                                        <select id="inputState" class="form-control">
-                                      <option selected>Choose...</option>
-                                      <option>...</option>
-                                    </select>
+                                        <label for="inputNameUser">Name</label>
+                                        <input type="text" class="form-control" id="inputNameUser" [(ngModel)]="user.name" name="name" required placeholder="Wolfgang">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputLastNameUser">Last name</label>
+                                        <input type="text" class="form-control" id="inputLastNameUser" [(ngModel)]="user.lastName" name="lastName" required placeholder="Mozart">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="inputZip">Zip</label>
-                                        <input type="text" class="form-control" id="inputZip">
+                                        <label for="inputAgeUser">Age</label>
+                                        <input type="number" min="1" max="100" class="form-control" [(ngModel)]="user.age" name="age" required id="inputAgeUser">
+                                    </div>
+                                    <div class="form-group col">
+                                        <label for="inputEmailUser">Email</label>
+                                        <input type="email" class="form-control" id="inputEmailUser" [(ngModel)]="user.email" name="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required placeholder="Mozart_1756@email.es">
+                                        <div *ngIf="email.errors?.pattern">
+                                            <span class="badge badge-info">Not correct format.</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                      Check me out
-                                    </label>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
+                                <button type="submit" class="btn btn-success btn-lg animation" [disabled]="!forma.valid" [ngClass]="{'btn-danger btn-sm' : !forma.valid}">Submit</button>
                             </form>
                         </div>
                     </div>
