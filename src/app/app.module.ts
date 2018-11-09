@@ -3,7 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Angular Form
+// ** Modules Angular Fire 2
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+// **************************
+import { environment } from '../environments/environment';
 
 // ANGULAR 7
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -13,6 +20,9 @@ import { ROUTES } from './app.routes';
 
 // SERVICES - PROVIDERS
 import { ListService } from 'src/app/services/list.service';
+import { UserProfileService } from 'src/app/services/user-profile.service';
+import { ChatService } from 'src/app/services/chat.service';
+
 
 // PIPES
 import { DomsecurePipe } from './pipes/domsecure.pipe';
@@ -28,6 +38,7 @@ import { ArtistPanelComponent } from './pages/artist-panel/artist-panel.componen
 import { ListPanelComponent } from './pages/list-panel/list-panel.component';
 import { ConfigurationsComponent } from './pages/configurations/configurations.component';
 import { ReportProblemsComponent } from './pages/report-problems/report-problems.component';
+import { FireChatComponent } from './pages/fire-chat/fire-chat.component';
 
 // COMPONENTS
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -65,17 +76,23 @@ import { ItemlistIframeComponent } from './components/iframeComponents/itemlist-
     ItemlistIframeComponent,
     ConfigurationsComponent,
     ReportProblemsComponent,
+    FireChatComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     HttpClientModule,
-    // ANGULAR 7
-    ScrollingModule
+    ScrollingModule, // ANGULAR 7
+    AngularFireModule.initializeApp(environment.firebase), // Angular Fire 2
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   providers: [
-    ListService
+    ListService,
+    UserProfileService,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })

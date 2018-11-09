@@ -1,0 +1,31 @@
+<div class="container main-container animated fadeIn">
+    <div class="row">
+        <div class="col bg-light">
+            <h1 class="text-center mt-3">Spowty Chat</h1>
+            <hr>
+
+            <app-loading *ngIf="this.loading" class="m-5 p-5"></app-loading>
+
+            <div id="main-container" *ngIf="!this.loading">
+                <div class="app-mensajes" id="app-mensajes">
+
+                    <div *ngFor="let chat of _chatService.chats" [ngClass]="{ 'text-right': _chatService.chats == chat.uid  }">
+                        <span class="badge" [ngClass]="{ 'badge-primary': _chatService.chats == chat.uid,
+                           'badge-success': _chatService != chat.uid }">
+              {{ chat.nombre }}</span>
+                        <p>
+                            {{ chat.mensaje }}
+                        </p>
+                    </div>
+                </div>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" name="mensaje" [(ngModel)]="message" class="form-control " (keyup.enter)="sendMessage()" placeholder="Send message">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="sendMessage()">SEND</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

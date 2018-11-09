@@ -38,7 +38,7 @@ export class ConfigurationsComponent implements OnInit {
   ngOnInit() {
   }
   changeInputList() {
-    const selector = document.getElementById('selectList');
+    const selector = (<HTMLInputElement>document.getElementById('selectList'));
     this.listSelected = this._listService.getList(selector[selector.selectedIndex].value);
     this.listName = this.listSelected.name;
     this.listDescription = this.listSelected.description;
@@ -60,16 +60,18 @@ export class ConfigurationsComponent implements OnInit {
         this.showError('OK, the list has been removed.', 'success');
     } else {
       // Cazar la lista y los input y modificar los datos
-      console.log('modificar la lista');
-      const name = document.getElementById('listName').value;
-      const description = document.getElementById('listDescription').value;
+      const name = (<HTMLInputElement>document.getElementById('listName')).value;
+      const description = (<HTMLInputElement>document.getElementById('listDescription')).value;
       if (name != null && name !== '') {
-        console.log(name, description);
-        this._listService.changeList(this.listSelected, name, description);
-        this.myLists = this._listService.getLists();
-        document.getElementById('listName').value = '';
-        document.getElementById('listDescription').value = '';
-        this.showError('Perfect, name details has been changed.', 'success');
+        if (this._listService.checkNameList(name)) {
+          this.showError('Sorry, the name list already exist.', 'warning');
+        } else {
+          this._listService.changeList(this.listSelected, name, description);
+          this.myLists = this._listService.getLists();
+          (<HTMLInputElement>document.getElementById('listName')).value = '';
+          (<HTMLInputElement>document.getElementById('listDescription')).value = '';
+          this.showError('Perfect, name details has been changed.', 'success');
+        }
 
       } else {
         this.showError('Remember, name list is required.', 'warning');

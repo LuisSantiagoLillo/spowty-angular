@@ -7,6 +7,7 @@ import { ListPanelComponent } from './pages/list-panel/list-panel.component';
 import { ItemsListComponent } from './pages/list-panel/items-list/items-list.component';
 import { ConfigurationsComponent } from './pages/configurations/configurations.component';
 import { ReportProblemsComponent } from './pages/report-problems/report-problems.component';
+import { FireChatComponent } from './pages/fire-chat/fire-chat.component';
 
 
 // DEFINE THE ROUTES APP
@@ -24,6 +25,8 @@ export const ROUTES: Routes = [
     },
     {path: 'configurations', component: ConfigurationsComponent},
     {path: 'report', component: ReportProblemsComponent},
+    {path: 'chat', component: FireChatComponent},
+
 
 
     // Default routes
