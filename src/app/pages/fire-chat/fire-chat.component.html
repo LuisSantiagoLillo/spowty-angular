@@ -9,9 +9,9 @@
             <div id="main-container" *ngIf="!this.loading">
                 <div class="app-mensajes" id="app-mensajes">
 
-                    <div *ngFor="let chat of _chatService.chats" [ngClass]="{ 'text-right': _chatService.chats == chat.uid  }">
-                        <span class="badge" [ngClass]="{ 'badge-primary': _chatService.chats == chat.uid,
-                           'badge-success': _chatService != chat.uid }">
+                    <div *ngFor="let chat of _chatService.chats" class="ml-5 mr-5" [ngClass]="{ 'text-right': _userService.user.uid == chat.uid  }">
+                        <span class="badge" [ngClass]="{ 'badge-primary': _userService.user.uid == chat.uid,
+                           'badge-success': _userService.user.uid != chat.uid }">
               {{ chat.nombre }}</span>
                         <p>
                             {{ chat.mensaje }}

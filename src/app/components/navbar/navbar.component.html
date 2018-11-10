@@ -9,7 +9,7 @@
     </button>
 
     <!-- NAVBAR ITEMS -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="_userService.userlogged">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active" routerLinkActive="active">
                 <a class="nav-link" routerLink="spowty">SPOWTY</a>
@@ -18,22 +18,27 @@
                 <a class="nav-link" routerLink="panel-list">MyList <i class="fas fa-play"></i></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Options <i class="fas fa-cogs"></i>
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" routerLink="configurations" aria-haspopup="true" aria-expanded="false">
+                    Configurations <i class="fas fa-cogs"></i>
                 </a>
+                <!--
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" routerLink="configurations">Configurations</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" routerLink="report">Report some problems</a>
                 </div>
+                -->
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="chat">Chat<i class="ml-1 fas fa-comments"></i></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" (keyup)="search(busqueda.value)" #busqueda type="search" placeholder="Search some music..." aria-label="Search">
+            <input class="form-control mr-sm-2" (keyup)="search(busqueda.value)" #busqueda type="search" placeholder="Search by artist..." aria-label="Search">
         </form>
+        <button type="button" class="btn btn-outline-info btn-sm ml-2" (click)="_userService.logout()">
+                Logout
+              </button>
     </div>
 </nav>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService, Mensaje } from '../../services/chat.service';
+import { UserProfileService } from '../../services/user-profile.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class FireChatComponent implements OnInit {
   scroll: any;
   loading: boolean = true;
   constructor(
-    public _chatService: ChatService
+    public _chatService: ChatService,
+    public _userService: UserProfileService
   ) {
     this._chatService.loadMessages();
   }
@@ -23,7 +25,7 @@ export class FireChatComponent implements OnInit {
       setTimeout(() => {
         this.scroll = document.getElementById('app-mensajes');
         this.scroll.scrollTop = this.scroll.scrollHeight;
-      },20);
+      }, 20);
     }, 1000);
 
   }
@@ -35,13 +37,11 @@ export class FireChatComponent implements OnInit {
     } else {
       this._chatService. addMessage(this.message)
       .then(() => {
-        console.log('Mensage enviado');
         this.message = '';
         this.scroll.scrollTop = this.scroll.scrollHeight;
 
       })
       .catch(() => {
-        console.log('Fallo en el envio');
       });
 
     }

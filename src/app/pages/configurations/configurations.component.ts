@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicListService, Lists, Item } from 'src/app/services/music-list.service';
 import { NgForm} from '@angular/forms';
+import { UserProfileService } from '../../services/user-profile.service';
+import { ReportIssuesService } from 'src/app/services/report-issues.service';
 
 @Component({
   selector: 'app-configurations',
@@ -21,16 +23,13 @@ export class ConfigurationsComponent implements OnInit {
   color = '';
   // ********
   // ** User Form
-  user: Object = {
-    nick: null,
-    name: null,
-    lastName: null,
-    age: null,
-    email: null
+  report = {
+    title2: null,
+    message2: null,
   };
   // ********
   constructor(
-    private _listService: MusicListService,
+    private _listService: MusicListService, public _userService: UserProfileService, private _reportService: ReportIssuesService
   ) {
     this.myLists = _listService.getLists();
    }
@@ -92,14 +91,17 @@ export class ConfigurationsComponent implements OnInit {
 // USER FORM
   saveForm(forma: NgForm) {
     if (forma.valid) {
-      console.log(forma.valid);
+      this._reportService.addReport(this.report.title2, this.report.message2)
+        .then(() => {
+          this.showError('The report has been submited.', 'success');
+          forma.resetForm();
+        })
+        .catch((err) => {
+          this.showError(err , 'danger');
+        });
     } else {
-      console.log(forma.valid);
-
+      this.showError('Invalid form.', 'warning');
     }
-    console.log("ngForm", forma);
-    console.log('value', forma.value);
-    console.log(this.user);
   }
   // ***************
 }

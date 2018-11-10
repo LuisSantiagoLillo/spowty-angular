@@ -1,0 +1,20 @@
+<div class="row" *ngIf="!_userService.userlogged">
+
+    <div class="col-md-12 text-center jumbotron jumbotron-fluid">
+
+        <p>
+            Ingrese al chat con su cuenta favorita
+        </p>
+
+        <button type="button" class="btn btn-outline-primary ml-1 mr-1 mt-2" (click)="loginSpowty('google')">
+        Google
+      </button>
+
+        <button type="button" class="btn btn-outline-info ml-1 mr-1 mt-2" (click)="loginSpowty('twitter')">
+        Twitter
+      </button>
+
+
+    </div>
+
+</div>

@@ -66,15 +66,31 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                               <img class="d-block w-100" src="../../../assets/img/iconConfigurations/notifications.png" alt="First slide" class=" rounded float-left img-50">
-                              <h2><span class="badge badge-secondary ml-3">Notifications</span></h2>
+                              <h2><span class="badge badge-secondary ml-3">Report problems</span></h2>
                             </button>
                         </h5>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                            beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                            <div class="card-body">
+                                <form (ngSubmit)="saveForm(forma)" #forma="ngForm" novalidate="">
+                                    <div class="form-row">
+                                        <div class="form-group col-12">
+                                            <label for="inputTitle2">Title of the issue:</label>
+                                            <input type="text" minlength="4" class="form-control" id="inputTitle2" [(ngModel)]="report.title2" name="title2" #title2="ngModel" required placeholder="Issues with ... ">
+                                            <div *ngIf="title2.errors?.minlength">
+                                                <span class="badge badge-info">This field require {{title2.errors.minlength.requiredLength}} characters or more.</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="inputMessage2">Message:</label>
+                                            <textarea class="form-control" [(ngModel)]="report.message2" name="message2" required id="inputMessage2" rows="8"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-lg animation mt-4" [disabled]="!forma.valid" [ngClass]="{'btn-danger btn-sm' : !forma.valid}">Submit</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,38 +104,19 @@
                         </h5>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <form (ngSubmit)="saveForm(forma)" #forma="ngForm" novalidate="">
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label for="inputNickUser">Nick</label>
-                                        <input type="text" minlength="4" class="form-control" id="inputNickUser" [(ngModel)]="user.nick" name="nick" #nick="ngModel" required placeholder="Mozart1756">
-                                        <div *ngIf="nick.errors?.minlength">
-                                            <span class="badge badge-info">This field require {{nick.errors.minlength.requiredLength}} characters or more.</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputNameUser">Name</label>
-                                        <input type="text" class="form-control" id="inputNameUser" [(ngModel)]="user.name" name="name" required placeholder="Wolfgang">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputLastNameUser">Last name</label>
-                                        <input type="text" class="form-control" id="inputLastNameUser" [(ngModel)]="user.lastName" name="lastName" required placeholder="Mozart">
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="inputAgeUser">Age</label>
-                                        <input type="number" min="1" max="100" class="form-control" [(ngModel)]="user.age" name="age" required id="inputAgeUser">
-                                    </div>
-                                    <div class="form-group col">
-                                        <label for="inputEmailUser">Email</label>
-                                        <input type="email" class="form-control" id="inputEmailUser" [(ngModel)]="user.email" name="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required placeholder="Mozart_1756@email.es">
-                                        <div *ngIf="email.errors?.pattern">
-                                            <span class="badge badge-info">Not correct format.</span>
-                                        </div>
-                                    </div>
+                        <div class="col-12">
+                            <div class="card mt-2 mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        This is the information that we currently keep about you, it has been obtained in your google login
+                                    </h5>
+                                    <p class="card-text"><strong>Name: </strong> {{_userService.user.name}}</p>
+                                    <p class="card-text"><strong>Email: </strong> {{_userService.user.email}}</p>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-lg animation" [disabled]="!forma.valid" [ngClass]="{'btn-danger btn-sm' : !forma.valid}">Submit</button>
-                            </form>
+                            </div>
+                            <div class="col-12 text-right">
+                                <button class="btn btn-danger animation mt-4 mb-4 ">Dropt account</button>
+                            </div>
                         </div>
                     </div>
                 </div>

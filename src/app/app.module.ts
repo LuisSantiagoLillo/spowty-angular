@@ -22,7 +22,8 @@ import { ROUTES } from './app.routes';
 import { ListService } from 'src/app/services/list.service';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { ChatService } from 'src/app/services/chat.service';
-
+import { AuthGuardService } from '../app/services/auth-guard.service';
+import { ReportIssuesService } from './services/report-issues.service';
 
 // PIPES
 import { DomsecurePipe } from './pipes/domsecure.pipe';
@@ -51,6 +52,7 @@ import { CommonErrorComponent } from './components/errorComponents/common-error/
 import { AudioPlayerComponent } from './components/iframeComponents/audio-player/audio-player.component';
 import { ItemsListComponent } from './pages/list-panel/items-list/items-list.component';
 import { ItemlistIframeComponent } from './components/iframeComponents/itemlist-iframe/itemlist-iframe.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -77,6 +79,7 @@ import { ItemlistIframeComponent } from './components/iframeComponents/itemlist-
     ConfigurationsComponent,
     ReportProblemsComponent,
     FireChatComponent,
+    LoginComponent,
   ],
   imports: [
     FormsModule,
@@ -92,7 +95,9 @@ import { ItemlistIframeComponent } from './components/iframeComponents/itemlist-
   providers: [
     ListService,
     UserProfileService,
-    ChatService
+    ReportIssuesService,
+    ChatService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { UserProfileService } from './user-profile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ export class ChatService {
   private itemsCollection: AngularFirestoreCollection<Mensaje>;
   public chats: Mensaje[] = [];
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public _userService: UserProfileService
     ) { }
-
 
   loadMessages() {
     this.itemsCollection = this.afs.collection<Mensaje>('chats', ref => ref.orderBy('fecha', 'desc').limit(50));
@@ -29,12 +30,11 @@ export class ChatService {
   }
 
   addMessage( texto: string ){
-    // TODO falta el UID del usuario
     let mensaje: Mensaje = {
-      nombre: 'luis', // this.usuario.nombre,
+      nombre: this._userService.user.name,
       mensaje: texto,
       fecha: new Date().getTime(),
-      uid: 'asdasd' // this.usuario.uid
+      uid: this._userService.user.uid
     };
     return this.itemsCollection.add( mensaje );
   }
@@ -45,6 +45,6 @@ export class ChatService {
 export interface Mensaje {
   nombre: string;
   mensaje: string;
-  fecha?: number;
-  uid?: string;
+  fecha: number;
+  uid: string;
 }
