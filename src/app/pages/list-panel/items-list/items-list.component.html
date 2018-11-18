@@ -16,10 +16,10 @@
                                 <button class="btn btn-danger dropdown-item active" type="button" (click)="removeItem(item)"><i class="fas fa-trash"></i> Remove Song</button>
                             </div>
                         </div>
-                        <audio [src]="item.idTrack | domsecure" controls></audio>
                         <!--
-                        <iframe [src]="item.idTrack | domsecure" class="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <audio [src]="item.idTrack | domsecure" controls></audio>
                         -->
+                        <iframe [src]="item.idTrack | domsecure" class="" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </div>
                 </div>
             </div>

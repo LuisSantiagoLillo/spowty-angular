@@ -24,6 +24,7 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { AuthGuardService } from '../app/services/auth-guard.service';
 import { ReportIssuesService } from './services/report-issues.service';
+import { FirebaseLinksService } from './services/firebase-links.service';
 
 // PIPES
 import { DomsecurePipe } from './pipes/domsecure.pipe';
@@ -97,7 +98,8 @@ import { LoginComponent } from './components/login/login.component';
     UserProfileService,
     ReportIssuesService,
     ChatService,
-    AuthGuardService
+    AuthGuardService,
+    FirebaseLinksService
   ],
   bootstrap: [AppComponent]
 })

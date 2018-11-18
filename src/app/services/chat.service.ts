@@ -34,6 +34,7 @@ export class ChatService {
       nombre: this._userService.user.name,
       mensaje: texto,
       fecha: new Date().getTime(),
+      photo: this._userService.user.photo,
       uid: this._userService.user.uid
     };
     return this.itemsCollection.add( mensaje );
@@ -46,5 +47,6 @@ export interface Mensaje {
   nombre: string;
   mensaje: string;
   fecha: number;
+  photo: string;
   uid: string;
 }

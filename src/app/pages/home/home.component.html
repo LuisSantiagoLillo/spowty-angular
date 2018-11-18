@@ -1,55 +1,64 @@
 <div class="container animated fadeIn">
     <div class="row">
-        <div class="col-12 mt-1 mb-2">
-            <app-login></app-login>
-        </div>
-
         <div class="col-12 mt-2">
-            <div class="jumbotron jumbotron-fluid">
+            <div class=" bg-light">
                 <div class="container">
-                    <h1 class="display-4 center">Hi! and welcome to <i class="fas fa-music"></i></h1>
-                    <p class="lead">
+                    <h1 class="display-4 center pt-4">Hi! and welcome to <i class="fas fa-music" [ngClass]="{'animated bounce' : bounce}"></i></h1>
+                    <p class="lead mt-2">
                         This web app is created only for practice, not commercial use for me. Using the
-                        <a href="https://developer.spotify.com/documentation/web-api/"><span class="badge badge-secondary">Spotify API</span></a> to get some data from artists, albums, tracks...
+                        <a href="https://developer.spotify.com/documentation/web-api/"><span class="badge badge-success">Spotify API</span></a> to get some data from artists, albums, tracks...
                     </p>
 
-                    <hr class="my-4">
+                    <app-login></app-login>
 
-                    <p>You can access to the code on GitHub <a href="https://github.com/LuisSantiagoLillo/spowty-webApp-angular.git"><span class="badge badge-secondary">code here</span></a></p>
-                    <p>Visit my website for more projects <a href="https://portafolio-luis.herokuapp.com/"><span class="badge badge-info"><h2><i class="fab fa-angellist"></i></h2></span></a></p>
                 </div>
-                <div class="container mt-4">
-                    <div class="panel-group">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3>Main concepts used: </h3>
-                            </div>
-                            <div class="panel-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item">Angular 2-6 and VirtualScroll from Angular 7 :0)</li>
-                                    <li class="list-group-item">Single Page App</li>
-                                    <li class="list-group-item">API RestFull</li>
-                                    <li class="list-group-item">Bootstrap 4</li>
-                                    <li class="list-group-item">FireBase</li>
-                                    <li class="list-group-item">Auth0 authentication</li>
-                                    <li class="list-group-item">Token authentication - Google & Twitter</li>
-                                </ul>
+                <div class="container mt-2">
+
+                    <table class="table text-center">
+                        <thead class="thead-dark text-center">
+                            <tr>
+                                <th scope="col">Main concepts used</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr [ngClass]="{'table-primary animated jello' : cont === 1}">
+                                <td>Angular 2-6 and VirtualScroll from Angular 7 :0)</td>
+                            </tr>
+                            <tr [ngClass]="{'table-success animated wobble' : cont === 2}">
+                                <td>Single Page App</td>
+                            </tr>
+                            <tr [ngClass]="{'table-danger animated tada' : cont === 3}">
+                                <td>API RestFull</td>
+                            </tr>
+                            <tr [ngClass]="{'table-warning animated swing' : cont === 4}">
+                                <td>Bootstrap 4 + FontAwesome</td>
+                            </tr>
+                            <tr [ngClass]="{'table-info animated pulse' : cont === 5}">
+                                <td>FireBase Database</td>
+                            </tr>
+                            <tr [ngClass]="{'table-active animated flash' : cont === 6}">
+                                <td>Firebase Authentication - Google & Twitter & Facebook</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ul class="list-group pl-5 pr-5">
+                        <li class="list-group-item" [ngClass]="{'bg-warning' : cont === 7}">
+                            <p>You can access to the code on GitHub <a [href]="_linkService.arrayLinks[0].github"><span class="badge badge-success">code here</span></a></p>
+                        </li>
+                        <li class="list-group-item" [ngClass]="{'bg-info' : cont === 7}">
+                            <p>Visit my website for more projects <a [href]="_linkService.arrayLinks[0].portfolio"><span class="badge badge-info"><h4><i class="fab fa-angellist pt-2"></i></h4></span></a></p>
+                        </li>
+                    </ul>
+
+                    <div class="container mt-4 footer-copyright pt-5">
+                        <div class="row">
+                            <div class="col text-muted text-right">
+                                Designed and built with all the love in the world . Code licensed MIT, docs <a href="https://creativecommons.org/licenses/by/3.0/"><span class="badge badge-light"><h4><i class="far fa-closed-captioning"></i></h4></span></a>                                BY 3.0.
                             </div>
                         </div>
                     </div>
+
                 </div>
-
-                <div class="container mt-4">
-                    <div class="row">
-                        <div class="col">
-                            <p>Designed and built with all the love in the world .</p>
-                            <p>Code licensed MIT, docs <a href="https://creativecommons.org/licenses/by/3.0/"><span class="badge badge-light"><h4><i class="far fa-closed-captioning"></i></h4></span></a> BY 3.0.</p>
-
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-</div>

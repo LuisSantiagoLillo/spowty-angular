@@ -4,7 +4,8 @@ import { UserProfileService } from '../../services/user-profile.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: []
+  styles: [
+  ]
 })
 export class LoginComponent implements OnInit {
 
@@ -19,6 +20,12 @@ export class LoginComponent implements OnInit {
     console.log( proveedor );
     if (proveedor === 'google') {
       this._userService.googleLogin();
+    }
+    if (proveedor === 'twitter') {
+      this._userService.twitterLogin();
+    }
+    if (proveedor === 'facebook') {
+      this._userService.facebookLogin();
     }
   }
 

@@ -25,7 +25,7 @@ export class ConfigurationsComponent implements OnInit {
   // ** User Form
   report = {
     title2: null,
-    message2: null,
+    message2: null
   };
   // ********
   constructor(
@@ -37,8 +37,9 @@ export class ConfigurationsComponent implements OnInit {
   ngOnInit() {
   }
   changeInputList() {
-    const selector = (<HTMLInputElement>document.getElementById('selectList'));
-    this.listSelected = this._listService.getList(selector[selector.selectedIndex].value);
+    const selector = (<HTMLInputElement>document.getElementById('selectList')).value;
+    // this.listSelected = this._listService.getList(selector[selector.selectedIndex].value);
+    this.listSelected = this._listService.getList(selector);
     this.listName = this.listSelected.name;
     this.listDescription = this.listSelected.description;
   }
@@ -93,7 +94,7 @@ export class ConfigurationsComponent implements OnInit {
     if (forma.valid) {
       this._reportService.addReport(this.report.title2, this.report.message2)
         .then(() => {
-          this.showError('The report has been submited.', 'success');
+          this.showError('Thanks, your report has been submited.', 'success');
           forma.resetForm();
         })
         .catch((err) => {
@@ -104,4 +105,5 @@ export class ConfigurationsComponent implements OnInit {
     }
   }
   // ***************
+
 }

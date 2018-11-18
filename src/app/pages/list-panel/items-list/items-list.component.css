@@ -1,5 +1,9 @@
 .list-container {
+    /*
     height: 82vh;
+    width: 98vw;
+    */
+    height: 65vh;
     width: 98vw;
     overflow-x: hidden;
 }

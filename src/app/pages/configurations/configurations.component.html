@@ -108,14 +108,20 @@
                             <div class="card mt-2 mb-2">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        This is the information that we currently keep about you, it has been obtained in your google login
+                                        This is the information that we currently keep about you, it has been obtained in your login.
                                     </h5>
-                                    <p class="card-text"><strong>Name: </strong> {{_userService.user.name}}</p>
-                                    <p class="card-text"><strong>Email: </strong> {{_userService.user.email}}</p>
+                                    <div class="card">
+                                        <img [src]="_userService.user.photo" class="img-fluid img-thumbnail img-profile" alt="Responsive image">
+                                        <div class="card-body">
+                                            <p class="card-text"><strong>Name: </strong> {{_userService.user.name}}</p>
+                                            <p class="card-text"><strong>Email: </strong> {{_userService.user.email}}</p>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-12 text-right">
-                                <button class="btn btn-danger animation mt-4 mb-4 ">Dropt account</button>
+                                <button class="btn btn-danger animation mt-4 mb-4" (click)="_userService.logout()">Dropt account</button>
                             </div>
                         </div>
                     </div>
