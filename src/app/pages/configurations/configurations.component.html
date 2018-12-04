@@ -103,7 +103,7 @@
                            </button>
                         </h5>
                     </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" *ngIf="_userService.userlogged">
                         <div class="col-12">
                             <div class="card mt-2 mb-2">
                                 <div class="card-body">
@@ -122,6 +122,17 @@
                             </div>
                             <div class="col-12 text-right">
                                 <button class="btn btn-danger animation mt-4 mb-4" (click)="_userService.logout()">Dropt account</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" *ngIf="!_userService.userlogged">
+                        <div class="col-12">
+                            <div class="card mt-2 mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        You must be logued.
+                                    </h5>
+                                </div>
                             </div>
                         </div>
                     </div>

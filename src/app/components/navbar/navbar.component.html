@@ -9,7 +9,7 @@
     </button>
 
     <!-- NAVBAR ITEMS -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="_userService.userlogged">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active" routerLinkActive="active">
                 <a class="nav-link" routerLink="spowty">SPOWTY</a>
@@ -29,7 +29,7 @@
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" (keyup)="search(busqueda.value)" #busqueda type="search" placeholder="Search by artist..." aria-label="Search">
         </form>
-        <button type="button" class="btn btn-outline-info btn-sm ml-2" (click)="_userService.logout()">
+        <button type="button" class="btn btn-outline-info btn-sm ml-2" (click)="_userService.logout()" *ngIf="_userService.userlogged">
                 Logout
               </button>
     </div>
