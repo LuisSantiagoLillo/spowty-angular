@@ -1,6 +1,6 @@
 <div class="container animated fadeIn">
     <div class="row">
-        <div class="col">
+        <div class="col" *ngIf="loading == false">
             <div class="card-columns animated fadeIn" *ngIf="type">
                 <div *ngFor="let exito of data" class="card">
                     <img [src]="exito.images | noimage" alt="" class="card-img-top img-circle img-fluid">
@@ -31,6 +31,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col" *ngIf="loading == true">
+            <div style="min-height: 50vh"></div>
+            <app-loadingpersonal></app-loadingpersonal>
+        </div>
+        <div class="col" *ngIf="error">
+            <div style="min-height: 50vh"></div>
+            <app-common-error [title]="title" [message]="message" [color]="color"></app-common-error>
         </div>
     </div>
 </div>

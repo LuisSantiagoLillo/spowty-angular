@@ -54,6 +54,7 @@ import { AudioPlayerComponent } from './components/iframeComponents/audio-player
 import { ItemsListComponent } from './pages/list-panel/items-list/items-list.component';
 import { ItemlistIframeComponent } from './components/iframeComponents/itemlist-iframe/itemlist-iframe.component';
 import { LoginComponent } from './components/login/login.component';
+import { LoadingpersonalComponent } from './components/loadingpersonal/loadingpersonal.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { LoginComponent } from './components/login/login.component';
     ReportProblemsComponent,
     FireChatComponent,
     LoginComponent,
+    LoadingpersonalComponent,
   ],
   imports: [
     FormsModule,

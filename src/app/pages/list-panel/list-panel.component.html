@@ -15,11 +15,22 @@
         </div>
     </div>
 
+    <div *ngIf="myLists.length == 0">
+        <div class="jumbotron">
+            <h2><strong>We can't found any list.</strong></h2>
+            <h3>You need to click on "New List" to create you own music list and then add some music tracks.</h3>
+            <h3>Or click <button type="button" class="btn btn-lg btn-dark" (click)="newListHide = !newListHide">here</button> to create your new list.</h3>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-12">
             <router-outlet></router-outlet>
         </div>
     </div>
+
+
 
 
 

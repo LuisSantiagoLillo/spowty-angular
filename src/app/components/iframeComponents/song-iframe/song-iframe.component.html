@@ -15,20 +15,27 @@
         <div class="card-header">
             <h5 class="">Select a List: </h5>
         </div>
-        <div class="card-body">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Lists</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="optionSelected">
+        <div *ngIf="lists.length > 0">
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Lists</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="optionSelected">
                   <option *ngFor="let select of lists" value={{select.name}} >{{select.name}}</option>
                 </select>
+                </div>
+                <app-common-error *ngIf="error" [title]="title" [message]="message" [color]="color"></app-common-error>
             </div>
-            <app-common-error *ngIf="error" [title]="title" [message]="message" [color]="color"></app-common-error>
+            <div class="card-footer text-muted">
+                <button type="button" class="btn btn-secondary mr-2" (click)="newListHide = !newListHide">Close</button>
+                <button type="button" class="btn btn-primary ml-2" (click)="addItem(track.name, track.uri)">Save changes</button>
+            </div>
         </div>
-        <div class="card-footer text-muted">
-            <button type="button" class="btn btn-secondary mr-2" (click)="newListHide = !newListHide">Close</button>
-            <button type="button" class="btn btn-primary ml-2" (click)="addItem(track.name, track.uri)">Save changes</button>
+        <div *ngIf="lists.length == 0">
+            <div class="card-body">
+                <h3>Please, first create a new list in MyList</h3>
+            </div>
         </div>
     </div>
 </div>

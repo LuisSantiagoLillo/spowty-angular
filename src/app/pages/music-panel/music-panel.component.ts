@@ -15,6 +15,12 @@ export class MusicPanelComponent implements OnInit {
   errorService: any[] = [];
   lessIframe: boolean = screen.width <= 1200 && screen.width >= 570;
 
+  loading: boolean = false;
+  error: boolean = false;
+  title: string = "Connection server error";
+  message: string = "Service is not working.";
+  color: string = "warning";
+
   constructor(
     private _spotifyService: SpotifyAPIService,
     private activatedRoute: ActivatedRoute,
@@ -47,31 +53,40 @@ export class MusicPanelComponent implements OnInit {
 }
 
 requestInfo(elemento_buscado) {
-  if (elemento_buscado === undefined) {
-    this.type = true;
-    this._spotifyService.obtenerNuevosExitos()
-    .subscribe((resp: any) => {
-      // console.log(resp);
-      this.data = resp.albums.items;
-    }, (errorService) => {
-      // console.log(errorService);
-      this.errorService = errorService;
-      // ES CLAVE POR SI RECARGAN DESDE SPOWTY
-      this.requestInfo(elemento_buscado);
-    });
-
-  } else {
-    this.type = false;
-    this._spotifyService.obtenerArtistaBuscado(elemento_buscado)
-    .subscribe((resp: any) => {
-      // console.log(resp);
-      this.data = resp.artists.items;
-
-    }, (errorService) => {
-      // console.log(errorService);
-      this.errorService = errorService;
-    });
- }
+  this.loading = true;
+  setTimeout(() => {
+      if (elemento_buscado === undefined) {
+        this.type = true;
+        this._spotifyService.obtenerNuevosExitos()
+        .subscribe((resp: any) => {
+          // console.log(resp);
+          this.data = resp.albums.items;
+          this.loading = false;
+          this.error = false;
+        }, (errorService) => {
+          this.loading = false;
+          this.error = true;
+          // console.log(errorService);
+          this.errorService = errorService;
+          // ES CLAVE POR SI RECARGAN DESDE SPOWTY
+          this.requestInfo(elemento_buscado);
+        });
+      } else {
+        this.type = false;
+        this._spotifyService.obtenerArtistaBuscado(elemento_buscado)
+        .subscribe((resp: any) => {
+          // console.log(resp);
+          this.data = resp.artists.items;
+          this.loading = false;
+          this.error = false;
+        }, (errorService) => {
+          this.loading = false;
+          this.error = true;
+          // console.log(errorService);
+          this.errorService = errorService;
+        });
+     }
+  }, 2000);
 }
 
 }
