@@ -13,7 +13,16 @@
 
 <div style="max-width: 20rem;" class="card text-center fixed-bottom mb-5 mr-4 ml-4 animated fadeIn container-newList-300" [ngClass]="{'container-newList-300': !newListHide, 'container-newList-0': newListHide}">
     <div class="card-header">
-        <h5 class="">Select a List: </h5>
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger btn-xs" (click)="newListHide = !newListHide">X</button>
+                </div>
+                <div class="col-10">
+                    <h2 class="">Select a List: </h2>
+                </div>
+            </div>
+        </div>
     </div>
     <div *ngIf="lists.length > 0">
         <div class="card-body">
